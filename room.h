@@ -1,4 +1,5 @@
-#include "item.h"
+#include <vector>
+
 #if 0
 Justin Iness
 C++ Programming
@@ -6,15 +7,21 @@ C++ Programming
 Room class for Zuul project
 #endif
 
+using namespace std;
+
+struct Item {
+        char name[30];
+};
+
 class Room {
 	public:
 		Room(char*);
 		~Room();
-		char* getName;
+		char* getName();
 		void newItem(char*);
-		char* getItems;
+		char* getItems();
 	protected:
 		char name[50];
 		vector<Item*> roomitems;
-}
+};
 

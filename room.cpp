@@ -1,5 +1,6 @@
 #include "room.h"
 #include <iostream>
+#include <cstring>
 
 #if 0
 Justin Iness
@@ -13,9 +14,9 @@ using namespace std;
 Room::Room (char* inName) {
 	strcpy(this->name, inName);
 }
-Games::~Games() {
+Room::~Room() {
 	
 }
-char* Games::getName() {
+char* Room::getName() {
 	return this->name;
 }

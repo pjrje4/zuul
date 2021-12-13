@@ -1,4 +1,7 @@
 #include "room.h"
+#include <vector>
+#include <iostream>
+#include <cstring>
 
 #if 0
 Justin Iness
@@ -15,6 +18,9 @@ void drop(vector<Room*>&);
 
 int main() {
 	vector<Room*> rooms;
+	Room* m = new Room("potato");
+	rooms.push_back(m);
+	char currentRoom[50] = "potato";
 	while (true) {
 		char input[20];
 		cout << "Enter a command (N, W, E, S, PICK, DROP, QUIT): ";
@@ -56,8 +62,12 @@ void go(int dir, vector<Room*>&) {
 		//south
 	}
 }
-void pick(vector<Room*>&) {
-
+void pick(vector<Room*>& in/*, inRoom*/) {
+	for (vector<Room*>::iterator i = in.begin(); i != in.end(); i++) { //iterate vector
+		//if (strcmp((*i)->getName, currentRoom) == 0) { // if the input = title
+			 cout << (*i)->getName() << endl; // output info
+	//	}
+        }
 }
 void drop(vector<Room*>&) {
 
