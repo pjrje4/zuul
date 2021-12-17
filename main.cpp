@@ -26,16 +26,16 @@ int main() {
 		cout << "Enter a command (N, W, E, S, PICK, DROP, QUIT): ";
 		cin.getline(input, 19);
 		if (strcmp(input, "N") == 0) {
-			go(1, rooms);
+			go(1, rooms, currentRoom);
 		}
 		else if (strcmp(input, "W") == 0) {
-                        go(2, rooms);
+                        go(2, rooms, currentRoom);
                 }
 		else if (strcmp(input, "E") == 0) {
-                        go(3, rooms);
+                        go(3, rooms, currentRoom);
                 }
 		else if (strcmp(input, "S") == 0) {
-                        go(4, rooms);
+                        go(4, rooms, currentRoom);
                 }
 		else if (strcmp(input, "PICK") == 0) {
                         pick(rooms, currentRoom);
@@ -48,7 +48,7 @@ int main() {
                 }
 	}
 }
-void go(int dir, vector<Room*>&) {
+void go(int dir, vector<Room*>&, int &inRoom) {
 	if (dir == 1) {
 		//north
 	}
@@ -61,6 +61,8 @@ void go(int dir, vector<Room*>&) {
 	if (dir == 4) {
 		//south
 	}
+	cout << in[inRoom]->getName() << endl;
+	cout << in[inRoom]->getItems << endl;
 }
 void pick(vector<Room*>& in, int &inRoom) {
 	//for (vector<Room*>::iterator i = in.begin(); i != in.end(); i++) { //iterate vector
