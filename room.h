@@ -15,13 +15,18 @@ struct Item {
 
 class Room {
 	public:
+		int north;
+		int west;
+		int east;
+		int south;
+
 		Room(char*);
 		~Room();
 		char* getName();
 		void newItem(char*);
-		char* getItems();
+		void getItems();
+		vector<Item*> roomitems;
 	protected:
 		char name[50];
-		vector<Item*> roomitems;
 };
 
