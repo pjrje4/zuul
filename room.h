@@ -10,23 +10,23 @@ Room class for Zuul project
 using namespace std;
 
 struct Item {
-        char name[30];
+        char name[30]; // name of item
 };
 
 class Room {
 	public:
-		int north;
+		int north; // exits
 		int west;
 		int east;
 		int south;
 
-		Room(char*);
-		~Room();
-		char* getName();
+		Room(char*); // constructor
+		~Room(); // deconstructor
+		char* getName(); // getters / setters / newitems
 		void newItem(char*);
 		void getItems();
-		vector<Item*> roomitems;
+		vector<Item*> roomitems; // item vector 
 	protected:
-		char name[50];
+		char name[50]; // name of room
 };
 

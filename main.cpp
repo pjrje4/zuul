@@ -15,12 +15,13 @@ using namespace std;
 
 
 int main() {
-
+	//initialize vector and map
 	vector<Room*> rooms;
 	map<int, char*> exits;
 
-	int currentRoom = 0;
+	int currentRoom = 0; // current room
 
+	//make all the rooms
 	Room* a = new Room("The math classroom");
 	exits[0] = "S";
 	//a->north = 0;
@@ -146,9 +147,9 @@ int main() {
 	//o->south = 0;
 	rooms.push_back(o);
 
-	vector<Item*> inventory;
+	vector<Item*> inventory; //inventory vector
 
-	while (true) {
+	while (true) {//main loop
 		cout << endl;
 		cout << endl;
 		cout << endl;
@@ -167,62 +168,62 @@ int main() {
 
 		char input[20];
 		cout << "Enter a command (N, W, E, S, PICK, DROP, QUIT): ";
-		cin.getline(input, 19);
+		cin.getline(input, 19); //userinput
 
-		if (strcmp(input, "N") == 0) {
+		if (strcmp(input, "N") == 0) { // go north
 			if (rooms[currentRoom]->north != NULL) {
 				currentRoom = rooms[currentRoom]->north;
 			}
 		}
-		else if (strcmp(input, "W") == 0) {
+		else if (strcmp(input, "W") == 0) { // go west
 			if (rooms[currentRoom]->west != NULL) {
 				currentRoom = rooms[currentRoom]->west;
 			}
                 }
-		else if (strcmp(input, "E") == 0) {
+		else if (strcmp(input, "E") == 0) { // go east
 			if (rooms[currentRoom]->east != NULL) {
 				currentRoom = rooms[currentRoom]->east;
 			}
                 }
-		else if (strcmp(input, "S") == 0) {
+		else if (strcmp(input, "S") == 0) { // go south
 			if (rooms[currentRoom]->south != NULL) {
 				currentRoom = rooms[currentRoom]->south;
 			}
                 }
-		if (currentRoom == 14) {
+		if (currentRoom == 14) { // end room gg!
 			cout << "YOU WIN! YOU ESCAPED THE SCHOOL!";
 			return 0;
 		}
 
 
-		else if (strcmp(input, "PICK") == 0) {
+		else if (strcmp(input, "PICK") == 0) { // pickup items
                         cout << "Pick up what?" << endl;
-                        cin.getline(input, 19);
+                        cin.getline(input, 19); // userinput
 
 			for (vector<Item*>::iterator i = rooms[currentRoom]->roomitems.begin(); i != rooms[currentRoom]->roomitems.end(); i++) { //iterate vector
-                        	if (strcmp((*i)->name, input) == 0) { // if the input = title
+                        	if (strcmp((*i)->name, input) == 0) { // if the name of item = input
                   	 		Item* item = new Item();
 					strcpy(item->name, (*i)->name);
-					inventory.push_back(item);
+					inventory.push_back(item); // delete item and new item in inventory
 					
 					rooms[currentRoom]->roomitems.erase(i);
 					break;
                                 }
                         }
                 }
-		else if (strcmp(input, "DROP") == 0) {
+		else if (strcmp(input, "DROP") == 0) { // drop items
 			cout << "Drop what?" << endl;
-			cin.getline(input, 19);
+			cin.getline(input, 19); // userinput
 
 			for (vector<Item*>::iterator i = inventory.begin(); i != inventory.end(); i++) { //iterate vector
-                        	if (strcmp((*i)->name, input) == 0) { // if the input = title
+                        	if (strcmp((*i)->name, input) == 0) { // if the name of item = input
                                 	rooms[currentRoom]->newItem((*i)->name);
-                  	 		inventory.erase(i);
+                  	 		inventory.erase(i); // move item from inventory to room
 					break;
 				}
                         }
                 }
-		else if (strcmp(input, "QUIT") == 0) {
+		else if (strcmp(input, "QUIT") == 0) { // quit game
                         return 0;
                 }
 	}
